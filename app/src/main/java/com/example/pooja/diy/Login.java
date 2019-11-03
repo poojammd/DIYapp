@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
                 }
 
 
-                else if(res==true ) {
+                else if(res == true ) {
                     Intent i=new Intent( getApplicationContext(),MainActivity.class);
                     startActivity(i);
                     Toast.makeText(getApplicationContext(),"logged in ",Toast.LENGTH_SHORT).show();
