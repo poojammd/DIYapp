@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class Register extends AppCompatActivity  {
     EditText name,email,password;
-    Button reg;
+    Button reg,login;
     Databasehelper db;
 
     @Override
@@ -25,6 +25,7 @@ public class Register extends AppCompatActivity  {
         email=findViewById(R.id.editText3);
         password=findViewById(R.id.editText4);
         reg=findViewById(R.id.button3);
+        login=findViewById(R.id.button4);
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +47,15 @@ public class Register extends AppCompatActivity  {
                 }
             }
         });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent t=new Intent(getApplicationContext(),Login.class);
+                startActivity(t);
+            }
+        });
+
 
     }
 

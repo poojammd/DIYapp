@@ -12,7 +12,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME="register.db";
     public static final String TABLE_NAME="registeruser";
     public static final String COL_1="ID";
-    public static final String COL_2="username";
+    public static final String COL_2="email";
     public static final String COL_3="password";
 
     public Databasehelper( Context context) {
