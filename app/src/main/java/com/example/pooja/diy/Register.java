@@ -30,17 +30,19 @@ public class Register extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
 
-                String user=email.getText().toString();
-                String pass=password.getText().toString();
+                String user = email.getText().toString();
+                String pass = password.getText().toString();
                  if(user.length()>1 && pass.length()>1){
 
-                ContentValues contentValues=new ContentValues();
-                contentValues.put("email",user);
-                contentValues.put("password",pass);
-                db.addUser(contentValues);
+
+                long val = db.addUser(user,pass);
+                if(val > 0)
+                {
                     Toast.makeText(getApplicationContext(),"Registered",Toast.LENGTH_SHORT).show();
                 Intent i=new Intent(getApplicationContext(),Login.class);
-                startActivity(i);}
+                startActivity(i);
+                }
+                 }
                 else
                 {
                     Toast.makeText(getApplicationContext(),"Registration Error",Toast.LENGTH_SHORT).show();

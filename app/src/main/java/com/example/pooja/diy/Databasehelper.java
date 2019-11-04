@@ -17,31 +17,37 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     public Databasehelper( Context context) {
         super(context, DATABASE_NAME, null, 1);
-        getWritableDatabase().execSQL(" Create table if not exists registeruser (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `email` varchar(50), `password` varchar(50));");
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+     sqLiteDatabase.execSQL(" Create table  registeruser (`ID` INTEGER PRIMARY KEY AUTOINCREMENT, `email` text, `password` text);");
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+     sqLiteDatabase.execSQL(" drop table if exists " +TABLE_NAME);
+     onCreate(sqLiteDatabase);
     }
 
-    public void addUser(ContentValues contentValues)
+    public long addUser(String email,String password)
     {
-
-        getWritableDatabase().insert("registeruser",null,contentValues);
+       SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("email",email);
+        contentValues.put("password",password);
+        long res=db.insert("registeruser",null,contentValues);
+        db.close();
+        return  res;
 
 
     }
 
     public boolean checkUser (String email, String password)
     {
-        String [] columns={COL_1};
+        String [] columns={ COL_1 };
         SQLiteDatabase db=getReadableDatabase();
         String selection=COL_2 + "=?" + " and " + COL_3 + "=?";
         String [] selectionArgs={email,password};

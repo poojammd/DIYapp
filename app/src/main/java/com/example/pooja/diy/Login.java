@@ -37,9 +37,9 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user=Email.getText().toString();
-                String pswd=Password.getText().toString();
-                boolean res=db.checkUser(user,pswd);
+                String user = Email.getText().toString();
+                String pswd = Password.getText().toString();
+                boolean res = db.checkUser(user,pswd);
 
                 if(user.equals("") || pswd.equals(""))
                 {
@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
                 }
 
 
-                else if(res == true ) {
+               if(res == true ) {
                     Intent i=new Intent( getApplicationContext(),MainActivity.class);
                     startActivity(i);
                     Toast.makeText(getApplicationContext(),"logged in ",Toast.LENGTH_SHORT).show();
